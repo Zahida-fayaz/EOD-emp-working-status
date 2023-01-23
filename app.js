@@ -3,8 +3,8 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const task = require('./routes/task');
-
+const task = require('./routes/task')
+const ejsMate = require('ejs-mate');
 
 //connected to the database
 mongoose.set("strictQuery", true);
@@ -24,5 +24,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
+app.engine('ejs', ejsMate);
 
-app.use('/report',task)
+app.get('/', (req, res) => {
+    res.render('components/home');
+})
+
+app.use('/report', task)
