@@ -7,7 +7,7 @@ const task = require('./routes/task')
 
 //connected to the database
 mongoose.set("strictQuery", true);
-mongoose.connect("mongodb+srv://zahida:zahida@test.kgff3hf.mongodb.net/test")
+mongoose.connect("mongodb+srv://zahida:zahida@test.kgff3hf.mongodb.net/employee")
     .then(() => {
         console.log("Database Connected");
         app.listen("8080", function () {
@@ -22,6 +22,10 @@ mongoose.connect("mongodb+srv://zahida:zahida@test.kgff3hf.mongodb.net/test")
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set('views', path.join(__dirname, 'views'));
+<<<<<<< HEAD
 app.use(express.static('public'));
 
 app.use('/report',task)
+=======
+app.use(express.static('public'));
+>>>>>>> master
