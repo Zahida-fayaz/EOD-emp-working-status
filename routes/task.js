@@ -1,7 +1,7 @@
 const express = require('express');
 // const mongoose = require('mongoose');
 const router = express.Router();
-const Task = require('../models/taskSchema')
+const Task = require('../models/taskSchema');
 
 router.get("/", function (req, res) {
     res.render('components/addReport');
@@ -19,6 +19,22 @@ router.post("/", (req, res) => {
             console.log(err);
         })
         res.redirect('/');
+});
+
+
+
+router.get("/", function(req, res){
+    Task.find({}, function(error, result){
+        if(error){
+            console.log("there was an error while retrieving the data");
+            console.log(error);
+        }else{
+            res.render("components/showReports", {
+                reportList: result
+            });
+        }
+    });
+
 });
 
 module.exports = router;

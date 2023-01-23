@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+<h1> Daily report of following employees</h1>
+<div class="row">
+    <% for(var i = 0;i <report.length; i++){ %>
+        <div class="col-md-4 mb-5">
+            <div class="card text-center" style="width: 18rem;">
+                 <div class="card-body" style="width: 18rem">
+                 <h5 class="card-title"><%= report[i].Name %></h5>
+                 <p class="card-text"> <%= report[i].Id %><br>
+                    <%= report[i].Description %><br>
+                    <%= report[i].Date %>
+                </p>
+    
+                 </div>
+           </div>
+        </div>
+ <% } %>     
+</div>
+
+<%- include('../partials/footer') %>
+
+
