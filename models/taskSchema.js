@@ -9,4 +9,4 @@ const taskSchema = new mongoose.Schema({
     working_hours: Number
 });
 
-module.exports = mongoose.model("Task", taskSchema);
+module.exports = mongoose.model('Task', taskSchema);

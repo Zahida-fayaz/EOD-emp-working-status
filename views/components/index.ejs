@@ -1,54 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Task Tracker</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"
-    />
-
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="C:\Users\User\Documents\peko\task tracker\style.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <form action="/addREport" method="POST">
-      <div class="contact-box">
-        <div class="left">
-          <h1><b>Time tracking for better work, not over work</b></h1>
-        </div>
-        <div class="right">
-          <h2>Task Tracker</h2>
+<%- include('../partials/header') %>
+  <div class="container">
+    <div class="contact-box">
+      <div class="left">
+        <h1><b>Time tracking for better work, not over work</b></h1>
+      </div>
+      <div class="right">
+        <h2>Task Tracker</h2>
+        <form action="/report" method="POST">
           <span>
             <label for="Name">
               <b>Name: </b>
-
-              <input type="text" class="field" placeholder="Name" /></label></span>
+              <input type="text" class="field" placeholder="Name" name="name"></label>
+          </span>
           <label for="Task-id">
             <b>Task Id: </b>
-            <input type="text" class="field" placeholder="Enter your task id"/></label>
+            <input type="text" class="field" placeholder="Enter your task id" name="task_id"></label>
           <label for="Description ">
             <b>Description:</b>
-            <textarea class="field area" placeholder="Description"></textarea>
+            <textarea class="field area" placeholder="Description" name="description"></textarea>
           </label>
-          <label for="Date"
-            ><b>Date:</b> <input type="date" id="Date" name="Date"/></label>
+          <label for="Date"><b>Date:</b> <input type="date" id="Date" name="Date" /></label>
           <label for="working hrs">
             <b>Working Hours:</b>
-            <input type="text" class="field" placeholder="Working hrs"/></label>
-
+            <input type="text" class="field" placeholder="Working hrs" name="working_hours"></label>
           <button class="btn">submit</button>
-        </div>
+        </form>
       </div>
       </form>
     </div>
-  </body>
-</html>
+  </div>
+  <%- include('../partials/footer') %>

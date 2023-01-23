@@ -1,12 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
+const Task = require('../models/taskSchema')
 
-router.get("/index", function (req, res) {
-    res.render("components/index");
+router.get("/", function (req, res) {
+    res.render('components/addReport');
 });
 
-router.post("/index", (req, res) => {
+router.post("/", (req, res) => {
     const task = new Task(req.body);
     task.save()
         .then(() => {
@@ -17,6 +18,7 @@ router.post("/index", (req, res) => {
             console.log("got an error");
             console.log(err);
         })
+        res.redirect('/report');
 });
 
 module.exports = router;

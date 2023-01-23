@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const Task = require('./models/taskSchema')
+const task = require('./routes/task')
 
 //connected to the database
 mongoose.set("strictQuery", true);
@@ -23,3 +23,5 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
+
+app.use('/report',task)
