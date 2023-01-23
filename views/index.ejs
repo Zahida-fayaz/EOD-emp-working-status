@@ -8,18 +8,25 @@
 </head>
 <body>
     <div>
-        <form>
+        <form action="/index", method="POST">
             
             <label for="name">Name</label>
             <input type="text"  name="name"  class="name" placeholder="enter your task id">
+            <br>
+        
             <label for="task_id">Task-Id</label>
             <input type="text"  name="task_id"  class="task_id" placeholder="enter your task id">
-            <label for="desc">Description</label>
-            <input type="text"  name="desc"  class="desc" placeholder="write description here">
+            <br>
+
+            <label for="description">Description</label>
+            <input type="text"  name="description"  class="desc" placeholder="write description here"><br>
+
             <label for="date">Date</label>
             <input type="date"  name="date"  class="date" placeholder="today's date here">
-            <label for="hours">Working Hours</label>
-            <input type="text"  name="hours"  class="hours" placeholder="mention today's working hours here">
+            <br>
+            <label for="working_hours">Working Hours</label>
+            <input type="text"  name="hours"  class="working_hours" placeholder="mention today's working hours here">
+            <br>
             <input type="submit" value="Submit">
             
             
