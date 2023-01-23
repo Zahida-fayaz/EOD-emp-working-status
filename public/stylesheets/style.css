@@ -1,6 +1,5 @@
-*{
-
-    padding:0px;
+* {
+    padding: 0px;
     margin: 0px;
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
@@ -21,11 +20,12 @@ body {
     height: 100%;
     border-radius: 15px;
 }
-.container:after{
-    content:'';
-    position:absolute;
-    left:0;
-    top:0;
+
+.container:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     background: url("../images/tasktracker.jpeg") no-repeat center;
@@ -57,17 +57,19 @@ body {
 .right {
     padding: 25px 40px;
 }
-h2{
-position: relative;
+
+h2 {
+    position: relative;
     padding-bottom: 1px;
     margin-bottom: 10px;
 }
-h1{
-    
+
+h1 {
+
     position: relative;
     padding-bottom: 1px;
     margin-top: 50px;
-    
+
 }
 
 h2:after {
@@ -89,7 +91,7 @@ h2:after {
     background-color: #c7e6d6;
     margin-bottom: 22px;
     border-radius: 15px;
-    
+
 
 }
 
@@ -102,12 +104,14 @@ h2:after {
     background-color: rgb(202, 217, 218);
     border: 2px solid rgba(30, 85, 250, 0.47);
 }
-.area{
+
+.area {
     min-height: 15px;
     border-radius: 15px;
 }
-.btn{
-    width:100%;
+
+.btn {
+    width: 100%;
     padding: 15px 25px;
     font-size: 1.1rem;
     background-color: #303633;
@@ -124,14 +128,14 @@ h2:after {
     background-color: #073018;
 }
 
-#Date{
-     width:100%;
-     margin-bottom: 3rem;
-     background-color: #c7e6d6;
-     min-height: 15px;
-     padding:15px 25px;
-     outline:none;
-   
+#Date {
+    width: 100%;
+    margin-bottom: 3rem;
+    background-color: #c7e6d6;
+    min-height: 15px;
+    padding: 15px 25px;
+    outline: none;
+
 }
 
 #Date:hover {
