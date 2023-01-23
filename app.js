@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 
 //connected to the database
 mongoose.set("strictQuery", true);
-mongoose.connect("mongodb+srv://zahida:<zahida>@test.kgff3hf.mongodb.net/test")
+mongoose.connect("mongodb+srv://zahida:zahida@test.kgff3hf.mongodb.net/employee")
 .then(() => {
     console.log("Database Connected");
 })
