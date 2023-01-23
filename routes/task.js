@@ -1,5 +1,5 @@
 const express = require('express');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const router = express.Router();
 const Task = require('../models/taskSchema')
 
@@ -18,7 +18,7 @@ router.post("/", (req, res) => {
             console.log("got an error");
             console.log(err);
         })
-        res.redirect('/report');
+        res.redirect('/');
 });
 
 module.exports = router;
