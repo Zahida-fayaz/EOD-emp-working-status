@@ -1,4 +1,4 @@
-<%- include('../partials/header') %>
+<% layout('layouts/boilerplate') %> 
   <div class="container">
     <div class="contact-box">
       <div class="left">
@@ -19,7 +19,7 @@
             <b>Description:</b>
             <textarea class="field area" placeholder="Description" name="description"></textarea>
           </label>
-          <label for="Date"><b>Date:</b> <input type="date" id="Date" name="Date" /></label>
+          <label for="Date"><b>Date:</b> <input type="date" id="date" name="date" /></label>
           <label for="working hrs">
             <b>Working Hours:</b>
             <input type="text" class="field" placeholder="Working hrs" name="working_hours"></label>
@@ -29,4 +29,3 @@
       </form>
     </div>
   </div>
-  <%- include('../partials/footer') %>
