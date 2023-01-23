@@ -31,9 +31,6 @@ router.get("/", function(req, res){
         }else{
             res.render("components/showReports", {
                 reportList: result
-                
-
-
             });
         }
     });
