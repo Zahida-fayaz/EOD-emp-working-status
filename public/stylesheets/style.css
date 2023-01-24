@@ -36,6 +36,7 @@ body {
 
 .contact-box {
     max-width: 850px;
+    max-height: 700px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
@@ -58,18 +59,31 @@ body {
     padding: 25px 40px;
 }
 
-h2 {
-    position: relative;
-    padding-bottom: 1px;
-    margin-bottom: 10px;
-}
 
-h1 {
+
+h3 {
 
     position: relative;
     padding-bottom: 1px;
     margin-top: 50px;
+    font-weight: bold;
 
+}
+h3:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    height: 4px;
+    width: 50px;
+    
+}
+
+h2 {
+    position: relative;
+    padding-bottom: 1px;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 h2:after {
@@ -123,22 +137,18 @@ h2:after {
     margin: top 0.5em;
 }
 
-.btn:hover {
-
-    background-color: #073018;
-}
-
-#Date {
+#date {
     width: 100%;
-    margin-bottom: 3rem;
+    padding: 0.5rem 1rem;
+    outline: #303633;
+    border: 2px solid rgba(0, 0, 0, 0);
     background-color: #c7e6d6;
-    min-height: 15px;
-    padding: 15px 25px;
-    outline: none;
+    margin-bottom: 22px;
+    border-radius: 15px;
 
 }
 
-#Date:hover {
+#date:hover {
 
     background-color: rgba(0, 0, 0, 0.1);
 }

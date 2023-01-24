@@ -1,31 +1,24 @@
-<% layout('layouts/boilerplate') %> 
+ <% layout('layouts/boilerplate') %> 
   <div class="container">
     <div class="contact-box">
       <div class="left">
-        <h1><b>Time tracking for better work, not over work</b></h1>
+       <h3>Time tracking for better work, not over work</h3>
       </div>
-      <div class="right">
-        <h2>Task Tracker</h2>
+        <div class="right">
+         <h2>Task Tracker</h2>
         <form action="/report" method="POST">
-          <span>
-            <label for="Name">
-              <b>Name: </b>
-              <input type="text" class="field" placeholder="Name" name="name"></label>
-          </span>
-          <label for="Task-id">
-            <b>Task Id: </b>
-            <input type="text" class="field" placeholder="Enter your task id" name="task_id"></label>
-          <label for="Description ">
-            <b>Description:</b>
-            <textarea class="field area" placeholder="Description" name="description"></textarea>
-          </label>
-          <label for="Date"><b>Date:</b> <input type="date" id="date" name="date" /></label>
-          <label for="working hrs">
-            <b>Working Hours:</b>
-            <input type="text" class="field" placeholder="Working hrs" name="working_hours"></label>
-          <button class="btn">submit</button>
-        </form>
-      </div>
+              <label class="Name"> <b> Name:</b></label>
+              <input type="text" class="field" placeholder="Name" name="name">
+              <label class="Task-id"><b>Task Id: </b></label>
+              <input type="text" class="field" placeholder="Enter your task id" name="task_id">
+              <label class="Description"><b>Description:</b></label>
+              <textarea class="field area" placeholder="Description" name="description"></textarea>
+              <label class="Date"><b>Date:</b></label>
+              <input type="date" id="date" name="date" />
+              <label class="working hrs" ><b>Working Hours:</b></label>
+              <input type="text" class="field" placeholder="Working hrs" name="working_hours">
+              <button class="btn">submit</button>
+         </div>
       </form>
     </div>
   </div>
