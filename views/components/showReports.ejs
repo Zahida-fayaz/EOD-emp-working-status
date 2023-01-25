@@ -1,27 +1,59 @@
 <% layout ('layouts/boilerplate') %>
     <h1 class="text-center mt-3 fw-bold"> End of the report of the employees</h1>
-    <div class="row m-3">
-        <% for(let i=0;i <reportList.length; i++){ %>
-            <div class="card text-white bg-dark m-3" style="max-width: 18rem;">
-                <div class="card-header">
-                    <%= reportList[i].name %>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <%= reportList[i].task_id %>
-                    </h5>
-                    <p class="card-text">
-                        <%= reportList[i].description %>
-                    </p>
-                </div>
-                <div class="card-text">
-                    <span class="me-5">
-                        <%= reportList[i].date %>
-                    </span>
-                    <span class="ms-5">
-                        <%= reportList[i].working_hours %> hours
-                    </span>
-                </div>
-            </div>
-            <% } %>
+    <div class="container">
+        <table id="reportTable" class="pt-1 datatable table  table-striped table-hover table-bordered width-100%">
+            <thead>
+                <tr>
+                    <th scope="col">S.no</th>
+                    <th scope="col">Task-id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th class="col">Date</th>
+                    <th class="col">Working Hours</th>
+                    <th class="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i=0;i <reportList.length; i++){ %>
+                    <tr>
+                        <th scope="row">
+                            <%= i+1 %>
+                        </th>
+                        <td>
+                            <%= reportList[i].task_id %>
+                        </td>
+                        <td>
+                            <%= reportList[i].name %>
+                        </td>
+                        <td>
+                            <%= reportList[i].description %>
+                        </td>
+                        <td>
+                            <%= reportList[i].date %>
+                        </td>
+                        <td>
+                            <%= reportList[i].working_hours %>
+                        </td>
+                        <td>
+                            <a href="/report/<%= reportList[i].id %>/edit" class="btn btn-sm btn-primary">Edit
+                            </a>
+                           <a href="/report/<%= reportList[i].id %>/delete" class="btn btn-sm btn-warning">Delete
+                            </a>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
     </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script  src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+
+    <script>
+        // Basic example
+        $(document).ready(function () {
+            $('#reportTable').DataTable({
+                select:true
+            });
+        });
+    </script>

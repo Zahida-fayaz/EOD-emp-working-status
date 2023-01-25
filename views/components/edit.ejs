@@ -1,0 +1,19 @@
+<% layout ('layouts/boilerplate') %>
+<div class="container">
+<form action="/report/<%= foundReport.id %>/edit" method="POST">
+    <label class="Name"> <b> Name:</b></label>
+    <input type="text" class="field" required
+        value="<%= foundReport.name %>">
+    <label class="Task-id"><b>Task Id: </b></label>
+    <input type="text" class="field" value="<%= foundReport.task_id %>" required
+        oninvalid="this.setCustomValidity('Task id required')" oninput="this.setCustomValidity('')">
+    <label class="Description"><b>Description:</b></label>
+    <textarea class="field area" placeholder="Description" name="description" required
+        oninvalid="this.setCustomValidity('description is necessary')" oninput="this.setCustomValidity('')"><%= foundReport.description %></textarea>
+    <label class="Date"><b>Date:</b></label>
+    <input type="date" id="date" name="date" required oninvalid="this.setCustomValidity('Date required')" oninput="this.setCustomValidity('')" value="<%= foundReport.date%>">
+    <label class="working hrs"><b>Working Hours:</b></label>
+    <input type="text" class="field" placeholder="Working hrs" name="working_hours" value="<%= foundReport.working_hours%>">
+    <button class="btn">Submit</button>
+</form>
+</div>

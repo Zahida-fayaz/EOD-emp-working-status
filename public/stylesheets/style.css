@@ -1,4 +1,4 @@
-* {
+/* * {
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
@@ -45,7 +45,6 @@ body {
     text-align: center;
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 0px 19px 5px rgba(167, 155, 155, 0.19);
-    /* background:url("tasktracker.jpeg") no-repeat center border-box;*/
 }
 
 .left {
@@ -151,4 +150,4 @@ h2:after {
 #date:hover {
 
     background-color: rgba(0, 0, 0, 0.1);
-}
+} */

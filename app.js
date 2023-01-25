@@ -30,4 +30,4 @@ app.get('/', (req, res) => {
     res.render('components/home');
 })
 
-app.use('/report', task)
+app.use(task)
