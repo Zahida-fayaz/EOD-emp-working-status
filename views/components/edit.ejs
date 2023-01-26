@@ -1,30 +1,46 @@
 <% layout('layouts/boilerplate') %>
-<div class="container mt-3">
-<form action="/reports/<%= foundReport.id %>/update " method="post">
+<h2 class="text-center mt-3">Edit your report</h2>
+<div class="container  d-flex justify-content-center">
+  <form  action="/reports/<%= foundReport.id %>/update " method="post" id="newForm" class="w-50 border border-light">
     <div class="col">
-      <label for="taskid" class="form-label">Task Id</label>
-      <input type="text" class="form-control" name="taskid" placeholder="task id" 
-      value="<%= foundReport.taskid %> " required>
+      <label for="name" class="form-label"> Name </label>
+      <div class="input-group">
+        <div class="input-group-text"><i class="fa-solid fa-user"></i></div>
+        <input type="text" name="name" class="form-control" id="name" 
+        value="<%= foundReport.name %>"  disabled>
+      </div>
     </div>
     <div class="col">
-      <label for="description" class="description">Description</label>
-      <textarea name="description" id="description" cols="30" rows="05" class="form-control"
-        placeholder="description of task" required> <%= foundReport.description %></textarea>
-    </div>
-    <div class="col">
-      <label for="name" class="form-label">Name</label>
-      <input type="text" name="name" id="name" class="form-control" class="form-control" placeholder="enter your name"
-       value="<%= foundReport.name %>" required>
-    </div>
-    <div class="col">
-      <label for="date" class="form-label">Date</label>
-      <input type="date" name="date" id="date" class="form-control" 
-     value="<%= foundReport.date %>" required>
+      <label for="date" class="form-label"> Date </label>
+      <div class="input-group">
+        <div class="input-group-text"><i class="fa-sharp fa-solid fa-calendar-days"></i></div>
+        <input type="date" name="date" class="form-control" id="date"
+        value="<%= foundReport.date %>" required>
+      </div>
     </div>
     <div class="col">
       <label for="time" class="form-label">Working hours</label>
-      <input type="text" name="time" id="time" class="form-control" 
-      value="<%= foundReport.time %>" required>
+      <div class="input-group">
+        <div class="input-group-text"><i class="fa-sharp fa-solid fa-clock"></i></div>
+        <input type="text" name="time" id="time" class="form-control"
+        value="<%= foundReport.time %>" data-parsley-type="number" required>
+      </div>
+    </div>
+    <div class="col">
+      <label for="taskid" class="form-label">Task Id</label>
+      <div class="input-group">
+        <div class="input-group-text"><i class="fa-solid fa-id-badge"></i></div>
+        <input type="text" class="form-control" name="taskid"  id="taskid" 
+        value="<%= foundReport.taskid %>" disabled>
+      </div>
+    </div>
+    <div class="col">
+      <label for="description" class="description">Description</label>
+      <div class="input-group">
+        <div class="input-group-text"> <i class="fa-solid fa-keyboard"></i></i></div>
+        <textarea name="description" id="description" cols="30" rows="03" class="form-control"
+          placeholder="description of task" required><%= foundReport.description %></textarea>
+      </div>
     </div>
     <button class="btn btn-info mt-3">Submit</button>
   </form>
