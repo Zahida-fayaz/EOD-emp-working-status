@@ -8,7 +8,7 @@
       <h1>Report Details</h1>
       <form action="/reports/new" method="post" id="newForm">
         <div class="col">
-          <label for="name" class="form-label"> Name </label>
+          <label for="name" class="form-label"> Name  </label>
           <div class="input-group">
             <div class="input-group-text"><i class="fa-solid fa-user"></i></div>
             <input type="text" name="name" class="form-control" id="name" placeholder="Username" minlength="3" 
@@ -19,21 +19,21 @@
           <label for="date" class="form-label"> Date </label>
           <div class="input-group">
             <div class="input-group-text"><i class="fa-sharp fa-solid fa-calendar-days"></i></div>
-            <input type="date" name="date" class="form-control" id="date" required>
+            <input type="date" name="date" class="form-control" id="date" required="">
           </div>
         </div>
         <div class="col">
           <label for="time" class="form-label">Working hours</label>
           <div class="input-group">
             <div class="input-group-text"><i class="fa-sharp fa-solid fa-clock"></i></div>
-            <input type="text" name="time" id="time" class="form-control" required>
+            <input type="text" name="time" id="time" class="form-control" required="">
           </div>
         </div>
         <div class="col">
           <label for="taskid" class="form-label">Task Id</label>
           <div class="input-group">
             <div class="input-group-text"><i class="fa-solid fa-id-badge"></i></div>
-            <input type="text" class="form-control" name="taskid" placeholder="task id" id="taskid" required>
+            <input type="text" class="form-control" name="taskid" placeholder="task id" id="taskid" required="">
           </div>
         </div>
         <div class="col">
@@ -41,10 +41,26 @@
           <div class="input-group">
             <div class="input-group-text"> <i class="fa-solid fa-keyboard"></i></i></div>
             <textarea name="description" id="description" cols="30" rows="03" class="form-control"
-              placeholder="description of task" required></textarea>
+              placeholder="description of task" ></textarea>
           </div>
         </div>
-        <button class="btn btn-info mt-3">Submit</button>
+        <button class="btn btn-dark mt-3">Submit</button>
       </form>
     </div>
   </div>
+
+  <script src="parsley.min.js"></script>
+  <script src="jquery.js"></script>
+  <script>
+      $(document).ready(function() {
+        $('#form').parsley();
+        
+      $('#form').on('submit', function(event) {
+        event.preventDefault();
+      });  
+      });
+  </script>
+ 
+
+  
+

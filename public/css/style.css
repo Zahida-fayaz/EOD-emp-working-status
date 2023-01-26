@@ -11,6 +11,7 @@ body {
     box-shadow: 0px 0px 19px 5px rgba(167, 155, 155, 0.19);
 }
 
+
 div .col{
     margin: 3px;
 }
@@ -55,3 +56,12 @@ textarea.parsley-error {
   opacity: 1;
 }
 /*Style for the parsely validation End*/
+
+.form-control{
+    border-radius: 10px;
+    max-width: 75%;
+    background-color: rgb(156, 160, 158);
+    }
+    .btn{
+        border-radius: 10px;
+    }
