@@ -57,14 +57,6 @@
                 lengthMenu: [5, 10, 20, 30, 40]
             });
         });
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                confirmButton: 'btn btn-success',
-                cancelButton: 'btn btn-danger'
-            },
-            buttonsStyling: false
-        })
-
         function confirm(id) {
             swal.fire({
                 title: 'Are you sure?',

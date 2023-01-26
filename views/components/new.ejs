@@ -1,20 +1,18 @@
 <% layout('layouts/boilerplate') %>
   <div class="container mt-3 row row-cols-2">
     <div class="container mt-3 col-7">
-      <h3>Time tracking for better work, not over work</h3>
-     <img src="/images/tasktracker.jpeg" alt="" width="80%" height="80%">
+      <!-- <h3>Time tracking for better work, not over work</h3> -->
+      <img src="/images/tasktracker.jpeg" alt="" width="80%" height="80%">
     </div>
     <div class="container mt-3 col-5">
       <h1>Report Details</h1>
-      
-     
-      <form action="/reports/new" method="post" id="form">
+      <form action="/reports/new" method="post" id="newForm">
         <div class="col">
-          <label for="name" class="form-label"> Name </label>
+          <label for="name" class="form-label"> Name  </label>
           <div class="input-group">
             <div class="input-group-text"><i class="fa-solid fa-user"></i></div>
-            <input type="text" name="name" class="form-control" id="name" placeholder="Username" 
-            data-parsley-pattern="^[a-zA-Z]+$" data-parsley-minlength="4" data-parsley-maxlength="20" data-parsley-trigger="keyup">
+            <input type="text" name="name" class="form-control" id="name" placeholder="Username" minlength="3" 
+            data-parsley-required-message="Name is required"  required>
           </div>
         </div>
         <div class="col">
@@ -50,8 +48,11 @@
       </form>
     </div>
   </div>
+<<<<<<< HEAD
 
  
+=======
+>>>>>>> 2008643b6a30624eeee4caf1cf1808326c8d658a
  
 
   
