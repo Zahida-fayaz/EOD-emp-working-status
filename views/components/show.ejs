@@ -1,7 +1,8 @@
 <% layout ('layouts/boilerplate') %>
     <h1 class="text-center mt-3 fw-bold"> End of the report of the employees</h1>
     <div class="container">
-        <table id="reportTable" class="pt-1 table  table-striped table-dark table-bordered width-100%">
+        <a href="/reports/new" class="btn btn-outline-primary mb-2"><i class="fa-sharp fa-solid fa-square-plus"></i></a>
+        <table id="reportTable" class="pt-1 table text-center table-striped table-dark table-bordered width-100%">
             <thead>
                 <tr>
                     <th scope="col">S.no</th>
@@ -35,8 +36,10 @@
                             <%= reports[i].time %>
                         </td>
                         <td>
-                            <a href="/reports/<%= reports[i].id %>/edit" class="btn btn-outline-info"> <i class="fa-sharp fa-solid fa-pen-to-square"></i> </a>
-                            <a onclick="confirm('<%=reports[i].id %>')" class="btn btn-outline-danger "> <i class="fa-sharp fa-solid fa-trash-can"></i></a>
+                            <a href="/reports/<%= reports[i].id %>/edit" class="btn btn-outline-info"> <i
+                                    class="fa-sharp fa-solid fa-pen-to-square"></i> </a>
+                            <a onclick="confirm('<%=reports[i].id %>')" class="btn btn-outline-danger "> <i
+                                    class="fa-sharp fa-solid fa-trash-can"></i></a>
                         </td>
                     </tr>
                     <% } %>
@@ -50,29 +53,40 @@
         $(document).ready(function () {
             $('#reportTable').DataTable({
                 select: true,
-                pageLength:5,
-                lengthMenu:[5,10,15,20]
+                pageLength: 5,
+                lengthMenu: [5, 10, 20, 30, 40]
             });
         });
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
 
-        //sweetalert for delete confirmation
         function confirm(id) {
-            Swal.fire({
+            swal.fire({
                 title: 'Are you sure?',
                 text: "You want to delete it!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Yes, delete it!',
+                closeOnConfirm: false,
+                closeOnCancel: false
             }).then((result) => {
                 if (result.isConfirmed) {
-                    Swal.fire(
+                    swal.fire(
                         'Deleted!',
                         'Your file has been deleted.',
-                        'success',
-                        window.location = '/reports/' + id + '/delete'
-                    )
+                        'success'
+                    ).then(okay => {
+                        if (okay) {
+                            window.location = '/reports/' + id + '/delete'
+                        }
+                    })
                 }
             })
         }
