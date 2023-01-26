@@ -1,0 +1,79 @@
+<% layout ('layouts/boilerplate') %>
+    <h1 class="text-center mt-3 fw-bold"> End of the report of the employees</h1>
+    <div class="container">
+        <table id="reportTable" class="pt-1 table  table-striped table-dark table-bordered width-100%">
+            <thead>
+                <tr>
+                    <th scope="col">S.no</th>
+                    <th scope="col">Task-id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th class="col">Date</th>
+                    <th class="col">Working Hours</th>
+                    <th class="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i=0; i<reports.length; i++){ %>
+                    <tr>
+                        <th scope="row">
+                            <%= i+1 %>
+                        </th>
+                        <td>
+                            <%= reports[i].taskid %>
+                        </td>
+                        <td>
+                            <%= reports[i].name %>
+                        </td>
+                        <td>
+                            <%= reports[i].description %>
+                        </td>
+                        <td>
+                            <%= reports[i].date %>
+                        </td>
+                        <td>
+                            <%= reports[i].time %>
+                        </td>
+                        <td>
+                            <a href="/reports/<%= reports[i].id %>/edit" class="btn btn-outline-info"> <i class="fa-sharp fa-solid fa-pen-to-square"></i> </a>
+                            <a onclick="confirm('<%=reports[i].id %>')" class="btn btn-outline-danger "> <i class="fa-sharp fa-solid fa-trash-can"></i></a>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+    <script>
+        // pagging
+        $(document).ready(function () {
+            $('#reportTable').DataTable({
+                select: true,
+                pageLength:5,
+                lengthMenu:[5,10,15,20]
+            });
+        });
+
+        //sweetalert for delete confirmation
+        function confirm(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You want to delete it!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success',
+                        window.location = '/reports/' + id + '/delete'
+                    )
+                }
+            })
+        }
+    </script>

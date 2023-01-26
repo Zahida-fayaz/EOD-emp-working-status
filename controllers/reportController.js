@@ -1,78 +1,94 @@
+const Report = require('../models/report');
+// const swal = require('sweetalert2');
 
-const Task = require('../models/taskSchema');
-
-const report_list = function (req, res) {
-    Task.find({}, function (error, result) {
+//all reports
+const all_reports = (req, res) => {
+    Report.find({}, (error, data) => {
         if (error) {
-            console.log("there was an error while retrieving the data");
-            console.log(error);
+            console.log("Error")
         } else {
-            res.render("components/showReports", {
-                reportList: result
-            });
+            res.render('components/show', { reports: data })
         }
     });
-
 };
 
-const report_add = function (req, res) {
-    res.render('components/addReport');
+//to the new report
+const reports_new = (req, res) => {
+    res.render('components/new')
 };
 
-const report_add_post = (req, res) => {
-    const task = new Task(req.body);
-    task.save()
+//add the report
+const reports_new_post = (req, res) => {
+    const report = new Report(req.body);
+    report.save()
         .then(() => {
-            console.log("data added");
-            console.log(task);
+            console.log("Data Added")
+            console.log(report)
         })
         .catch(err => {
-            console.log("got an error");
-            console.log(err);
+            console.log("Got an error")
+            console.log(err)
         })
-    res.redirect('report/show');
-};
+    res.redirect('/reports')
+}
 
-const report_id_edit = (req, res) => {
+//show one
+const report_id = (req, res) => {
     const id = req.params.id;
-    Task.findById(id, (error, foundReport) => {
+    Report.findById(id, (error, reportFound) => {
         if (error) {
-            res.send("Error found")
+            console.log("Id not found")
         } else {
-            res.render('components/edit', { foundReport: foundReport })
+            res.render('components/show', { reportFound: reportFound })
+        }
+    });
+}
+
+//edit page
+const reports_id_edit = (req, res, next) => {
+    const id = req.params.id;
+    Report.findById(id, (error, foundReport) => {
+        if (error) {
+            console.log("Data cannot be added")
+        } else {
+            res.render('components/edit', { foundReport: foundReport });
         }
     });
 };
 
-const report_edit_post = (req, res) => {
+//update report
+const reports_id_update = (req, res) => {
     const id = req.params.id;
     const body = req.body;
-    Task.findByIdAndUpdate(id, { ...body }, (error) => {
+    Report.findByIdAndUpdate(id, { ...body }, (error, updateReport) => {
         if (error) {
-            res.send("Not upadted")
+            console.log("Report Not found.")
         } else {
-            res.render('components/home')
+            res.redirect('/reports');
+            console.log('update Successfully', updateReport);
         }
     });
 };
 
-const report_delete = (req, res) => {
-    const id = req.params.id
-    Task.findByIdAndDelete(id, (err) => {
+//delete report
+const reports_id_delete = (req, res) => {
+    const id = req.params.id;
+    Report.findByIdAndDelete(id, (err) => {
         if (err) {
-            console.log("Got errror")
+            console.log("Report not deleted")
         } else {
-            console.log("Deleted")
+            console.log('Deleted succcessfully');
+            res.redirect('/reports');
         }
-    });
-    res.redirect('report')
+    })
 };
 
 module.exports = {
-    report_list,
-    report_add,
-    report_add_post,
-    report_delete,
-    report_id_edit,
-    report_edit_post
+    all_reports,
+    reports_new,
+    reports_new_post,
+    report_id,
+    reports_id_edit,
+    reports_id_update,
+    reports_id_delete
 }
