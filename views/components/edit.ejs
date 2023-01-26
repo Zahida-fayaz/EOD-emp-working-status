@@ -1,31 +1,29 @@
 <% layout('layouts/boilerplate') %>
-<div class="container mt-3">
-<form action="/reports/<%= foundReport.id %>/update " method="post">
-    <div class="col">
-      <label for="taskid" class="form-label">Task Id</label>
-      <input type="text" class="form-control" name="taskid" placeholder="task id" 
-      value="<%= foundReport.taskid %> " required>
-    </div>
-    <div class="col">
-      <label for="description" class="description">Description</label>
-      <textarea name="description" id="description" cols="20" rows="05" class="form-control"
-        placeholder="description of task" required> <%= foundReport.description %></textarea>
-    </div>
-    <div class="col">
-      <label for="name" class="form-label">Name</label>
-      <input type="text" name="name" id="name" class="form-control" class="form-control" placeholder="enter your name"
-       value="<%= foundReport.name %>" required>
-    </div>
-    <div class="col">
-      <label for="date" class="form-label">Date</label>
-      <input type="date" name="date" id="date" class="form-control" 
-     value="<%= foundReport.date %>" required>
-    </div>
-    <div class="col">
-      <label for="time" class="form-label">Working hours</label>
-      <input type="text" name="time" id="time" class="form-control" 
-      value="<%= foundReport.time %>" required>
-    </div>
-    <button class="btn btn-success mt-3">Submit</button>
-  </form>
-</div>
+  <div class="container mt-3 col-6 border border-light">
+    <form action="/reports/<%= foundReport.id %>/update " method="post" class="m-3">
+      <div class="row">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" name="name" id="name" class="form-control" class="form-control" placeholder="enter your name"
+          value="<%= foundReport.name %>" required>
+      </div>
+      <div class="row">
+        <label for="date" class="form-label">Date</label>
+        <input type="date" name="date" id="date" class="form-control" value="<%= foundReport.date %>" required>
+      </div>
+      <div class="row">
+        <label for="time" class="form-label">Working hours</label>
+        <input type="text" name="time" id="time" class="form-control" value="<%= foundReport.time %>" required>
+      </div>
+      <div class="row">
+        <label for="taskid" class="form-label">Task Id</label>
+        <input type="text" class="form-control" name="taskid" placeholder="task id" value="<%= foundReport.taskid %> "
+          required>
+      </div>
+      <div class="row">
+        <label for="description" class="description">Description</label>
+        <textarea name="description" id="description" cols="20" rows="03" class="form-control"
+          placeholder="description of task" required> <%= foundReport.description %></textarea>
+      </div>
+      <button class="btn btn-dark mt-3">Submit</button>
+    </form>
+  </div>
