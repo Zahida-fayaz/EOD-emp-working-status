@@ -32,4 +32,4 @@ app.get('/', (req, res) => {
     res.render('components/home')
 });
 
-app.use(report)
+app.use('/reports', report)
