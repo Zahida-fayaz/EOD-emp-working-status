@@ -59,7 +59,7 @@ const reports_new_post = (req, res) => {
 }
 //gt reg page
 const register_new_user = (req, res) => {
-    res.render('components/reg')
+    res.render('components/signup')
 };
 
 //register
