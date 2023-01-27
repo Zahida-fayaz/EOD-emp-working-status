@@ -57,6 +57,25 @@ const reports_new_post = (req, res) => {
         })
     res.redirect('/reports')
 }
+//gt reg page
+const register_new_user = (req, res) => {
+    res.render('components/reg')
+};
+
+//register
+const register_new_user_post = (req, res) => {
+    const register = new Register(req.body);
+    register.save()
+        .then(() => {
+            console.log("registered")
+            console.log(register)
+        })
+        .catch(err => {
+            console.log("Got an error")
+            console.log(err)
+        })
+    res.redirect('/reports')
+}
 
 //show one
 const report_id = (req, res) => {
@@ -116,5 +135,7 @@ module.exports = {
     report_id,
     reports_id_edit,
     reports_id_update,
-    reports_id_delete
+    reports_id_delete,
+    register_new_user,
+    register_new_user_post
 }
