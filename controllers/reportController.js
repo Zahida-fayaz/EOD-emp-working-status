@@ -2,6 +2,7 @@ const Report = require('../models/report');
 // const swal = require('sweetalert2');
 
 //all reports
+/*
 const all_reports = (req, res) => {
     Report.find({}, (error, data) => {
         if (error) {
@@ -11,6 +12,31 @@ const all_reports = (req, res) => {
         }
     });
 };
+*/
+const all_reports = (req, res) => {
+    // destructure page and limit and set default values
+    const { page = 1, limit = 5 } = req.query;
+  
+    try {
+      // execute query with page and limit values
+      const posts =  Report.find()
+        .limit(limit * 1)
+        .skip((page - 1) * limit)
+        .exec();
+  
+      // get total documents in the Posts collection 
+      const count =  Report.countDocuments();
+  
+      // return response with posts, total pages, and current page
+      res.render('components/show', {
+        posts: posts,
+        totalPages: Math.ceil(count / limit),
+        currentPage: page
+      });
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
 
 //to the new report
 const reports_new = (req, res) => {
