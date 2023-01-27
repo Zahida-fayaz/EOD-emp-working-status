@@ -17,7 +17,7 @@ const register_new_user_post = (req, res) => {
             console.log("Got an error")
             console.log(err)
         })
-    res.redirect('/show');``
+    res.redirect('/show');
 };
 
 module.exports = {

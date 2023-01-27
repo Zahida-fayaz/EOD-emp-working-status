@@ -5,7 +5,7 @@ const ejsMate = require('ejs-mate');
 const mongoose = require("mongoose")
 const bodyParser = require('body-parser');
 const report = require('./routes/reportRoutes')
-const report = require('./routes/registerRoutes')
+const register = require('./routes/registerRoutes')
 
 //Database Connection
 mongoose.set('strictQuery', true)
