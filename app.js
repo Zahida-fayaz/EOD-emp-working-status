@@ -5,6 +5,7 @@ const ejsMate = require('ejs-mate');
 const mongoose = require("mongoose")
 const bodyParser = require('body-parser');
 const report = require('./routes/reportRoutes')
+const report = require('./routes/registerRoutes')
 
 //Database Connection
 mongoose.set('strictQuery', true)
@@ -34,3 +35,4 @@ app.get('/', (req, res) => {
 
 
 app.use('/reports', report)
+app.use('/registers', register)

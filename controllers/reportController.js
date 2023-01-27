@@ -1,8 +1,12 @@
 const Report = require('../models/report');
+const Reegister = require('../models/register');
+
+
+
 // const swal = require('sweetalert2');
 
 //all reports
-/*
+
 const all_reports = (req, res) => {
     Report.find({}, (error, data) => {
         if (error) {
@@ -12,7 +16,7 @@ const all_reports = (req, res) => {
         }
     });
 };
-*/
+/*
 const all_reports = (req, res) => {
     // destructure page and limit and set default values
     const { page = 1, limit = 5 } = req.query;
@@ -38,6 +42,8 @@ const all_reports = (req, res) => {
     }
   }
 
+  */
+
 //to the new report
 const reports_new = (req, res) => {
     res.render('components/new')
@@ -50,25 +56,6 @@ const reports_new_post = (req, res) => {
         .then(() => {
             console.log("Data Added")
             console.log(report)
-        })
-        .catch(err => {
-            console.log("Got an error")
-            console.log(err)
-        })
-    res.redirect('/reports')
-}
-//gt reg page
-const register_new_user = (req, res) => {
-    res.render('components/signup')
-};
-
-//register
-const register_new_user_post = (req, res) => {
-    const register = new Register(req.body);
-    register.save()
-        .then(() => {
-            console.log("registered")
-            console.log(register)
         })
         .catch(err => {
             console.log("Got an error")
@@ -127,6 +114,31 @@ const reports_id_delete = (req, res) => {
         }
     })
 };
+
+
+
+
+//gt reg page
+const register_new_user = (req, res) => {
+    res.render('components/signup')
+};
+
+//register
+const register_new_user_post = (req, res) => {
+    const register = new Reegister(req.body);
+    register.save()
+        .then(() => {
+            console.log("registered")
+            console.log(register)
+        })
+        .catch(err => {
+            console.log("Got an error")
+            console.log(err)
+        })
+    res.redirect('/show');``
+};
+
+
 
 module.exports = {
     all_reports,

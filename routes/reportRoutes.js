@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const reportController = require('../controllers/reportController');
+const registerController = require('../controllers/registerController');
 
 //all reports
 router.get('/', reportController.all_reports);
@@ -24,10 +25,10 @@ router.post('/:id/update',reportController.reports_id_update);
 router.get('/:id/delete',reportController.reports_id_delete);
 
 //get register page
-router.get('/signup', reportController.register_new_user_post);
+router.get('/registers/signup', reportController.register_new_user_post);
 
 //add user info
-router.post('/signup', reportController.register_new_user_post);
+router.post('registers/signup', reportController.register_new_user_post);
 
 
 module.exports = router

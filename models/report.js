@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+
+// addreport schema
 const reportSchema = new mongoose.Schema({
     name:String,
     taskid:String,
@@ -8,9 +10,10 @@ const reportSchema = new mongoose.Schema({
     description:String
 });
 
+module.exports = mongoose.model('Report', reportSchema);
 
-
-
+//registration schema
+/*
 const registerSchema = new mongoose.Schema({
     fullname:String,
     email:String,
@@ -25,4 +28,4 @@ const Register = mongoose.model('register', registerSchema);
 
 
 //exporting model objects
-module.exports = {Report, Register}
+module.exports = {Report, Register}  */
