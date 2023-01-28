@@ -3,11 +3,11 @@ const Report = require('../models/report');
 
 //all reports
 const all_reports = (req, res) => {
-    Report.find({}, (error, foundReport) => {
+    Report.find({}, (error, data) => {
         if (error) {
             console.log("Error")
         } else {
-            res.render('components/show', { foundReport: foundReport })
+            res.render('components/show', { reports: data })
         }
     });
 };
