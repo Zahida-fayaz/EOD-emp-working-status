@@ -1,5 +1,5 @@
 <% layout ('layouts/boilerplate') %>
-    <h1 class="text-center text-dark mt-3 fw-bold" > EOD report of the employees</h1>
+    <h1 class="text-center text-dark mt-3 fw-bold"> EOD report of the employees</h1>
     <div class="container">
         <a href="/reports/new" class="btn btn-outline-primary mb-2"><i class="fa-sharp fa-solid fa-square-plus"></i></a>
         <table id="reportTable" class="pt-1 table text-center table-striped table-dark table-bordered width-100%">
@@ -15,37 +15,109 @@
                 </tr>
             </thead>
             <tbody>
-                <% for(let i=0; i<reports.length; i++){ %>
+                <% for(let i=0; i<foundReport.length; i++){ %>
                     <tr>
-                        <th scope="row">
-                            <%= i+1 %>
-                        </th>
-                        <td>
-                            <%= reports[i].taskid %>
-                        </td>
-                        <td>
-                            <%= reports[i].name %>
-                        </td>
-                        <td>
-                            <%= reports[i].description %>
-                        </td>
-                        <td>
-                            <%= reports[i].date %>
-                        </td>
-                        <td>
-                            <%= reports[i].time %>
-                        </td>
-                        <td>
-                            <a href="/reports/<%= reports[i].id %>/edit" class="btn btn-outline-info"> <i
-                                    class="fa-sharp fa-solid fa-pen-to-square"></i> </a>
-                            <a onclick="confirm('<%=reports[i].id %>')" class="btn btn-outline-danger "> <i
-                                    class="fa-sharp fa-solid fa-trash-can"></i></a>
-                        </td>
-                    </tr>
-                    <% } %>
+                            <th scope="row">
+                                <%= i+1 %>
+                            </th>
+                            <td>
+                                <%= foundReport[i].taskid %>
+                            </td>
+                            <td>
+                                <%= foundReport[i].name %>
+                            </td>
+                            <td>
+                                <%= foundReport[i].description %>
+                            </td>
+                            <td>
+                                <%= foundReport[i].date %>
+                            </td>
+                            <td>
+                                <%= foundReport[i].time %>
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-info" id="edit-btn" data-bs-toggle="modal"
+                                    data-bs-target="#edit-modal" data-id="<%= foundReport[i].id %>"><i
+                                        class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+                                <a onclick="confirm('<%=foundReport[i].id %>')" class="btn btn-outline-danger "> <i
+                                        class="fa-sharp fa-solid fa-trash-can"></i></a>
+                            </td>
+                        </tr>
+                        <!-- Edit modal -->
+                        <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog"
+                            aria-labelledby="editModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editModalLabel">Edit Employee</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/reports/<%=foundReport[i].id %>/update " method="post"
+                                            id="newForm" class="w-50 border border-light">
+                                            <div class="col">
+                                                <label for="name" class="form-label"> Name </label>
+                                                <div class="input-group">
+                                                    <div class="input-group-text"><i class="fa-solid fa-user"></i></div>
+                                                    <input type="text" name="name" class="form-control" id="name"
+                                                        value="<%= foundReport.name %>" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <label for="date" class="form-label"> Date </label>
+                                                <div class="input-group">
+                                                    <div class="input-group-text"><i
+                                                            class="fa-sharp fa-solid fa-calendar-days"></i></div>
+                                                    <input type="date" name="date" class="form-control" id="date"
+                                                        value="<%= foundReport.date %>" required>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <label for="time" class="form-label">Working hours</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-text"><i
+                                                            class="fa-sharp fa-solid fa-clock"></i>
+                                                    </div>
+                                                    <input type="text" name="time" id="time" class="form-control"
+                                                        value="<%= foundReport.time %>" data-parsley-type="number"
+                                                        required>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <label for="taskid" class="form-label">Task Id</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-text"><i class="fa-solid fa-id-badge"></i>
+                                                    </div>
+                                                    <input type="text" class="form-control" name="taskid" id="taskid"
+                                                        value="<%= foundReport.taskid %>" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <label for="description" class="description">Description</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-text"> <i
+                                                            class="fa-solid fa-keyboard"></i></i>
+                                                    </div>
+                                                    <textarea name="description" id="description" cols="30" rows="03"
+                                                        class="form-control" placeholder="description of task"
+                                                        required><%= foundReport.description %></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cancel</button>
+                                                <button class="btn btn-info">Submit</button>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
             </tbody>
         </table>
     </div>
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
     <script>
