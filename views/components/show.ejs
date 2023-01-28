@@ -108,13 +108,19 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
     <script>
+        // ************ CODE FOR EDIT POPUP STARTS ******************
         $(document).ready(function () {
             // Open modal and populate form with report data when edit button is clicked
             $('.edit-btn').on('click', function () {
+                //get the id from the edit btn
                 const reportId = $(this).data('id');
+
+                //console the id to check that id is receiving correctly
                 console.log(reportId)
-                // Get report data from server using reportId
+
+                // Get report data from server using the reportId that we get from the edit btn
                 $.get('/reports/' + reportId + '/edit', function (report) {
+                    //add the id of the fields and get their values also remove value attr form them
                     $('#name').val(report.name);
                     $('#date').val(report.date);
                     $('#description').val(report.description);
@@ -125,20 +131,25 @@
                 // Update report data in MongoDB when form is submitted
                 $('#edit-form').on('submit', function (e) {
                     e.preventDefault();
-                    console.log(reportId)
+
+                    //console the id here to ckeck that when btn is clicked id's match
+                    //console.log(reportId)
+
+                    //make a variable and use the same names as on the attr name in the fields
                     const updatedReport = {
                         name: $('#name').val(),
                         date: $('#date').val(),
                         description: $('#description').val(),
                         taskid: $('#taskid').val(),
                         time: $('#time').val(),
-                        // Get the value of other form fields as well
                     };
+
+
                     // Send PUT/PATCH request to update the report using reportId
                     $.ajax({
-                        url: '/reports/' + reportId + '/update',
-                        type: 'POST', // or PATCH
-                        data: updatedReport,
+                        url: '/reports/' + reportId + '/update', //route of update
+                        type: 'POST', // PUT or PATCH
+                        data: updatedReport, //the variable that is created above
                         success: function (response) {
                             // Close modal
                             $('#edit-modal').modal('hide');
@@ -155,14 +166,18 @@
                 });
             });
         });
-             // pagination
-             $(document).ready(function () {
+        // ************ CODE FOR EDIT POPUP ENDS ******************
+
+        // pagination
+        $(document).ready(function () {
             $('#reportTable').DataTable({
                 select: true,
                 pageLength: 5,
                 lengthMenu: [5, 10, 20, 30, 40]
             });
         });
+
+        // ************ CODE FOR DELETE POPUP STARTS ******************
         function confirm(id) {
             swal.fire({
                 title: 'Are you sure?',
@@ -188,4 +203,6 @@
                 }
             })
         }
-    </script>
+        // ************ CODE FOR DELETE POPUP ENDS ******************
+        
+   </script>
