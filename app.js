@@ -32,4 +32,14 @@ app.get('/', (req, res) => {
     res.render('components/home')
 });
 
+//dummy start
+app.get('/login',(req,res)=>{
+    res.render('components/login');
+})
+
+app.get('/signup',(req,res)=>{
+    res.render('components/signup');
+})
+//dummy end
+
 app.use('/reports', report)
