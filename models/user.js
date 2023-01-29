@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 //registration schema
-const registerSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     fullname:String,
     email:String,
     password:String,
@@ -9,4 +9,4 @@ const registerSchema = new mongoose.Schema({
     designation:String,
     address:String
 });
-module.exports = mongoose.model('Register', registerSchema);
+module.exports = mongoose.model('Regiister', userSchema);
