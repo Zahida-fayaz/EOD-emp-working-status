@@ -6,6 +6,7 @@ const mongoose = require("mongoose")
 const bodyParser = require('body-parser');
 const report = require('./routes/reportRoutes')
 
+
 //Database Connection
 mongoose.set('strictQuery', true)
 mongoose.connect("mongodb+srv://zahida:zahida@test.kgff3hf.mongodb.net/employee")
@@ -31,15 +32,5 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.render('components/home')
 });
-
-//dummy start
-app.get('/login',(req,res)=>{
-    res.render('components/login');
-})
-
-app.get('/signup',(req,res)=>{
-    res.render('components/signup');
-})
-//dummy end
 
 app.use('/reports', report)
