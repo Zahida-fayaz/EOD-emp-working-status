@@ -7,7 +7,7 @@ const all_reports = (req, res) => {
         if (error) {
             console.log("Error")
         } else {
-            res.render('components/show', { foundReport: foundReport })
+            res.render('components/show', { foundReport })
         }
     });
 };
@@ -35,11 +35,12 @@ const reports_new_post = (req, res) => {
 //show one
 const report_id = (req, res) => {
     const id = req.params.id;
-    Report.findById(id, (error, reportFound) => {
+    Report.findById(id, (error, foundReport) => {
         if (error) {
             console.log("Id not found")
         } else {
-            res.render('components/show', { reportFound: reportFound })
+            console.log(foundReport)
+            res.render('components/show', { foundReport: foundReport })
         }
     });
 }
@@ -51,7 +52,7 @@ const reports_id_edit = (req, res, next) => {
         if (error) {
             console.log("Data cannot be added")
         } else {
-            res.render('components/edit', { foundReport: foundReport });
+            res.render('components/edit', { foundReport });
         }
     });
 };
