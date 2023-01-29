@@ -1,5 +1,6 @@
 const Report = require('../models/report');
-const Reegister = require('../models/register');
+const Reegister = require('../models/user');
+
 
 
 
@@ -116,30 +117,6 @@ const reports_id_delete = (req, res) => {
 };
 
 
-
-
-//gt reg page
-const register_new_user = (req, res) => {
-    res.render('components/signup')
-};
-
-//register
-const register_new_user_post = (req, res) => {
-    const register = new Reegister(req.body);
-    register.save()
-        .then(() => {
-            console.log("registered")
-            console.log(register)
-        })
-        .catch(err => {
-            console.log("Got an error")
-            console.log(err)
-        })
-    res.redirect('/show');``
-};
-
-
-
 module.exports = {
     all_reports,
     reports_new,
@@ -147,7 +124,6 @@ module.exports = {
     report_id,
     reports_id_edit,
     reports_id_update,
-    reports_id_delete,
-    register_new_user,
-    register_new_user_post
+    reports_id_delete
+  
 }
