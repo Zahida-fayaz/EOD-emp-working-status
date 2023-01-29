@@ -1,5 +1,5 @@
 <% layout ('layouts/boilerplate') %>
-    <h1 class="text-center text-dark mt-3 fw-bold" > EOD report of the employees</h1>
+    <h1 class="text-center text-dark mt-3 fw-bold"> EOD report of the employees</h1>
     <div class="container">
         <a href="/reports/new" class="btn btn-outline-primary mb-2"><i class="fa-sharp fa-solid fa-square-plus"></i></a>
         <table id="reportTable" class="pt-1 table text-center table-striped table-dark table-bordered width-100%">
@@ -15,30 +15,32 @@
                 </tr>
             </thead>
             <tbody>
-                <% for(let i=0; i<reports.length; i++){ %>
+                <% for(let i=0; i<foundReport.length; i++){ %>
                     <tr>
                         <th scope="row">
-                            <%= i+1 %>
+                            <% foundReport[i].id %>
+                                <%= i+1 %>
                         </th>
                         <td>
-                            <%= reports[i].taskid %>
+                            <%= foundReport[i].taskid %>
                         </td>
                         <td>
-                            <%= reports[i].name %>
+                            <%= foundReport[i].name %>
                         </td>
                         <td>
-                            <%= reports[i].description %>
+                            <%= foundReport[i].description %>
                         </td>
                         <td>
-                            <%= reports[i].date %>
+                            <%= foundReport[i].date %>
                         </td>
                         <td>
-                            <%= reports[i].time %>
+                            <%= foundReport[i].time %>
                         </td>
                         <td>
-                            <a href="/reports/<%= reports[i].id %>/edit" class="btn btn-outline-info"> <i
+                            <a class="btn btn-outline-info edit-btn" data-id="<%= foundReport[i].id%>"
+                                data-bs-toggle="modal" data-bs-target="#edit-modal"> <i
                                     class="fa-sharp fa-solid fa-pen-to-square"></i> </a>
-                            <a onclick="confirm('<%=reports[i].id %>')" class="btn btn-outline-danger "> <i
+                            <a onclick="confirm('<%=foundReport[i].id %>')" class="btn btn-outline-danger "> <i
                                     class="fa-sharp fa-solid fa-trash-can"></i></a>
                         </td>
                     </tr>
@@ -46,11 +48,70 @@
             </tbody>
         </table>
     </div>
+    <!-- Edit modal -->
+    <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content d-flex align-items-center">
+                <div class="modal-header align-items-center">
+                    <h5 class="modal-title" id="editModalLabel">Edit Report</h5>
+                </div>
+                <div class="modal-body w-100">
+                    <form id="edit-form" class="w-100 ms-3">
+                        <div class="col">
+                            <label for="name" class="form-label"> Name </label>
+                            <div class="input-group">
+                                <div class="input-group-text"><i class="fa-solid fa-user"></i></div>
+                                <input type="text" name="name" value="" class="form-control" id="name">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="date" class="form-label"> Date </label>
+                            <div class="input-group">
+                                <div class="input-group-text"><i class="fa-sharp fa-solid fa-calendar-days"></i></div>
+                                <input type="date" name="date" value="" class="form-control" id="date">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="time" class="form-label">Working hours</label>
+                            <div class="input-group">
+                                <div class="input-group-text"><i class="fa-sharp fa-solid fa-clock"></i></div>
+                                <input type="text" name="time" value="" id="time" class="form-control"
+                                    data-parsley-type="number">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="taskid" class="form-label">Task Id</label>
+                            <div class="input-group">
+                                <div class="input-group-text"><i class="fa-solid fa-id-badge"></i></div>
+                                <input type="text" class="form-control" value="" name="taskid" id="taskid">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="description" class="description">Description</label>
+                            <div class="input-group">
+                                <div class="input-group-text"> <i class="fa-solid fa-keyboard"></i></i></div>
+                                <textarea name="description" id="description" cols="30" rows="03" class="form-control"
+                                    placeholder="description of task" required></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer me-5">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                            <button class="btn btn-success">Submit</button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
     <script>
-        // pagination
+        // ************ CODE FOR EDIT POPUP STARTS ******************
         $(document).ready(function () {
+<<<<<<< HEAD
             $('#reportTable').DataTable({
                 select: true,
                 server: true,
@@ -79,8 +140,96 @@
                         if (okay) {
                             window.location = '/reports/' + id + '/delete'
                         }
+=======
+            // Open modal and populate form with report data when edit button is clicked
+            $('.edit-btn').on('click', function (e) {
+                //get the id from the edit btn
+                const reportId = $(this).data('id');
+                //console the id to check that id is receiving correctly
+                console.log(reportId)
+
+                // Get report data from server using the reportId that we get from the edit btn
+                $.get('/reports/' + reportId + '/edit', function (foundReport) {
+                    //add the id of the fields and get their values also remove value attr form them
+                    $('#name').val(foundReport.name);
+                    $('#date').val(foundReport.date);
+                    $('#description').val(foundReport.description);
+                    $('#taskid').val(foundReport.taskid);
+                    $('#time').val(foundReport.time);
+>>>>>>> 11419ee26d1ddd0c1f5e43ddcc903716612ac61d
                     })
-                }
-            })
-        }
+
+                    // Update report data in MongoDB when form is submitted
+                    $('#edit-form').on('submit', function (e) {
+                        e.preventDefault();
+                        //console the id here to ckeck that when btn is clicked id's match
+                        //console.log(reportId)
+                        //make a variable and use the same names as on the attr name in the fields
+                        const updatedReport = {
+                            name: $('#name').val(),
+                            date: $('#date').val(),
+                            description: $('#description').val(),
+                            taskid: $('#taskid').val(),
+                            time: $('#time').val(),
+                        };
+                        // Send PUT/PATCH request to update the report using reportId
+                        $.ajax({
+                            url: '/reports/' + reportId + '/update', //route of update
+                            type: 'POST', // PUT or PATCH
+                            data: updatedReport, //the variable that is created above
+                            success: function (response) {
+                                // Close modal
+                                $('#edit-modal').modal('hide');
+                                // Show success message
+                                // alert('report updated successfully!');
+                                // Refresh the page to show updated report data
+                                location.reload();
+                            },
+                            error: function (xhr, status, error) {
+                                // Show error message
+                                alert('Error updating report: ' + error);
+                            }
+                        });
+                    });
+                });
+            });
+            // ************ CODE FOR EDIT POPUP ENDS ******************
+
+            // pagination
+            $(document).ready(function () {
+                $('#reportTable').DataTable({
+                    select: true,
+                    pageLength: 5,
+                    lengthMenu: [5, 10, 20, 30, 40]
+                });
+            });
+
+            // ************ CODE FOR DELETE POPUP STARTS ******************
+            function confirm(id) {
+                swal.fire({
+                    title: 'Are you sure?',
+                    text: "You want to delete it!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!',
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        ).then(okay => {
+                            if (okay) {
+                                window.location = '/reports/' + id + '/delete'
+                            }
+                        })
+                    }
+                })
+            }
+        // ************ CODE FOR DELETE POPUP ENDS ******************
+
     </script>
