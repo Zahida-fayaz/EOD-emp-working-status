@@ -4,8 +4,9 @@ const mongoose = require('mongoose');
 const registerSchema = new mongoose.Schema({
     fullname:String,
     email:String,
+    password:String,
     mobilenumber:String,
     designation:String,
     address:String
 });
-module.exports = mongoose.model('Reegister', registerSchema);
+module.exports = mongoose.model('Register', registerSchema);

@@ -111,36 +111,6 @@
     <script>
         // ************ CODE FOR EDIT POPUP STARTS ******************
         $(document).ready(function () {
-<<<<<<< HEAD
-            $('#reportTable').DataTable({
-                select: true,
-                server: true,
-                pageLength: 5,
-                lengthMenu: [5, 10, 20, 30, 40]
-            });
-        });
-        function confirm(id) {
-            swal.fire({
-                title: 'Are you sure?',
-                text: "You want to delete it!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!',
-                closeOnConfirm: false,
-                closeOnCancel: false
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                    ).then(okay => {
-                        if (okay) {
-                            window.location = '/reports/' + id + '/delete'
-                        }
-=======
             // Open modal and populate form with report data when edit button is clicked
             $('.edit-btn').on('click', function (e) {
                 //get the id from the edit btn
@@ -156,7 +126,6 @@
                     $('#description').val(foundReport.description);
                     $('#taskid').val(foundReport.taskid);
                     $('#time').val(foundReport.time);
->>>>>>> 11419ee26d1ddd0c1f5e43ddcc903716612ac61d
                     })
 
                     // Update report data in MongoDB when form is submitted

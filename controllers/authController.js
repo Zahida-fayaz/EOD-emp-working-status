@@ -1,4 +1,4 @@
- const Reegister = require('../models/user');
+ const Register = require('../models/user');
  /*
  const bcrypt = require('bcryptjs');
  const jwt = require('jsonwebtoken');
@@ -11,7 +11,7 @@ const register_new_user = (req, res) => {
 //register
 const register_new_user_post = (req, res) => {
     const reegister = new Reegister(req.body);
-    reegister.save()
+    register.save()
         .then(() => {
             console.log("registered")
             console.log(reegister)
