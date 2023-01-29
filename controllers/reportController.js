@@ -1,7 +1,13 @@
 const Report = require('../models/report');
+const Reegister = require('../models/user');
+
+
+
+
 // const swal = require('sweetalert2');
 
 //all reports
+
 const all_reports = (req, res) => {
     Report.find({}, (error, foundReport) => {
         if (error) {
@@ -11,6 +17,33 @@ const all_reports = (req, res) => {
         }
     });
 };
+/*
+const all_reports = (req, res) => {
+    // destructure page and limit and set default values
+    const { page = 1, limit = 5 } = req.query;
+  
+    try {
+      // execute query with page and limit values
+      const posts =  Report.find()
+        .limit(limit * 1)
+        .skip((page - 1) * limit)
+        .exec();
+  
+      // get total documents in the Posts collection 
+      const count =  Report.countDocuments();
+  
+      // return response with posts, total pages, and current page
+      res.render('components/show', {
+        posts: posts,
+        totalPages: Math.ceil(count / limit),
+        currentPage: page
+      });
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
+  */
 
 //to the new report
 const reports_new = (req, res) => {
@@ -84,6 +117,7 @@ const reports_id_delete = (req, res) => {
     })
 };
 
+
 module.exports = {
     all_reports,
     reports_new,
@@ -92,4 +126,5 @@ module.exports = {
     reports_id_edit,
     reports_id_update,
     reports_id_delete
+  
 }
