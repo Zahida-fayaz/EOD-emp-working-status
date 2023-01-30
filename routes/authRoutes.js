@@ -12,4 +12,6 @@ router.post('/signup', authController.register_new_user_post);
 
 router.get('/login', authController.login_new_user);
 
+router.post('/login', authController.login_new_user_post);
+
 module.exports = router
