@@ -1,12 +1,12 @@
 <% layout ('layouts/boilerplate') %>
-    <div class="container mt-5 d-flex justify-content-center vh-75">
-        <form class="w-50 loginForm" action="/reports/reg/login" method="post">
-            <h2 class=" text-success text-center"><b>Login</b></h2>
+    <div class="container mt-5 d-flex justify-content-lg-center vh-70 ">
+        <form class="w-50 loginForm " action="/reports/reg/login" method="post">
+            <h2 class=" text-success"><b>Login Here!!!</b></h2>
             <div class=" form-floating mb-2 ms-5">
                 <input type="text" class="form-control border-0 border-bottom" id="email" placeholder="User email" name="email">
                 <label for="email">Email Address</label>
             </div>
-            <div class=" form-floating mb-2 ms-5">
+            <div class=" form-floating mb-2 ms-5 text-left">
                 <input type="text" class="form-control border-0 border-bottom" id="password"
                     placeholder="enter a password" name="password">
                 <label for="password">Password</label>
@@ -20,7 +20,7 @@
             <div class=" mt-3 ms-5">
                 <input type="submit" class="btn btn-success w-25" name="login" value="Login">
                 </div>
-                <p>If not registered <a href="/reports/reg/signup">Register Here</a></p>
+                <p class="mt-4 ">Not having an account<a href="/reports/reg/signup "> register here</a></p>
 
         </form>
     </div> 

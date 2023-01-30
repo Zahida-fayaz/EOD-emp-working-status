@@ -1,7 +1,7 @@
  const Regiister = require('../models/user');
  
- const bcrypt = require('bcryptjs');
- const jwt = require('jsonwebtoken');
+ //const bcrypt = require('bcryptjs');
+ //const jwt = require('jsonwebtoken');
 
 //gt reg page
 const register_new_user = (req, res) => {
