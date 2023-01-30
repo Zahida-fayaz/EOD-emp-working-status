@@ -1,14 +1,7 @@
- const User = require('../models/user');
- const jwt = require('jsonwebtoken');
-const { create } = require('../models/report');
-
- // create json web token
-const maxAge = 3 * 24 * 60 * 60;
-const createToken = (id) => {
-  return jwt.sign({ id }, 'net ninja secret', {
-    expiresIn: maxAge
-  });
-};
+ const Regiister = require('../models/user');
+ 
+ //const bcrypt = require('bcryptjs');
+ //const jwt = require('jsonwebtoken');
 
 //gt reg page
 const signup_get = (req, res) => {
