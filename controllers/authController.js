@@ -1,41 +1,42 @@
- const Regiister = require('../models/user');
- 
- const bcrypt = require('bcryptjs');
+ const User = require('../models/user');
  const jwt = require('jsonwebtoken');
+const { create } = require('../models/report');
+
+ // create json web token
+const maxAge = 3 * 24 * 60 * 60;
+const createToken = (id) => {
+  return jwt.sign({ id }, 'net ninja secret', {
+    expiresIn: maxAge
+  });
+};
 
 //gt reg page
-const register_new_user = (req, res) => {
+const signup_get = (req, res) => {
     res.render('components/signup')
 };
 
-//register
-const register_new_user_post = (req, res) => { 
-   /* bcrypt.hash(req.body.password, 10, function( error, hashedPassword){
-    if(error){
-        console.log("error occured while encrypting password");
-    }*/
-    
-    const regiister = new Regiister(req.body);
-    regiister.save()
-        .then(() => {
-            console.log("registered")
-            console.log(regiister)
-        })
-        .catch(err => {
-            console.log("Got an error")
-            console.log(err)
-        })
-    //res.redirect('/show');
-//}); 
-};
-
-const login_new_user = (req, res) => {
+const login_get = (req, res) => {
     res.render('components/login')
 };
-
+//register
+const signup_post = async (req, res) => { 
+  try {
+    const user = await User.create(req.body);
+    const token = createToken(user._id);
+    console.log(user)
+    // res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
+    // res.status(201).json({ user: user._id });
+  }
+  catch (err) {
+    console.log(err)
+    // const errors = handleErrors(err);
+    // res.status(400).json({ errors });
+  } 
+};
 
 module.exports = {
-    register_new_user,
-    register_new_user_post,
-    login_new_user 
+    signup_get,
+    signup_post,
+    login_get,
+    
 } 

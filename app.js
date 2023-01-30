@@ -5,7 +5,7 @@ const ejsMate = require('ejs-mate');
 const mongoose = require("mongoose")
 const bodyParser = require('body-parser');
 const report = require('./routes/reportRoutes')
-const register = require('./routes/authRoutes')
+const authRoutes = require('./routes/authRoutes')
 
 //Database Connection
 mongoose.set('strictQuery', true)
@@ -32,15 +32,9 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.render('components/home')
 });
-/*
-app.get('/login',(req,res)=>{
-    res.render('components/login');
-})
 
-app.get('/signup',(req,res)=>{
-    res.render('components/signup');
-})
-*/
+
 app.use('/reports', report)
-app.use('/reports/reg', register)
+
+app.use('/reports', authRoutes)
 
