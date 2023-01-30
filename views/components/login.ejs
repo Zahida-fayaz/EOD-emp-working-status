@@ -1,6 +1,6 @@
 <% layout ('layouts/boilerplate') %>
     <div class="container mt-5 d-flex justify-content-center vh-75">
-        <form class="w-50 loginForm" action="/signup">
+        <form class="w-50 loginForm">
             <h2 class=" text-success text-center"><b>Login</b></h2>
             <div class=" form-floating mb-2 ms-5">
                 <input type="text" class="form-control border-0 border-bottom" id="email" placeholder="User email">
@@ -8,7 +8,7 @@
             </div>
             <div class="email error"></div>
             <div class=" form-floating mb-2 ms-5">
-                <input type="text" class="form-control border-0 border-bottom" id="password"
+                <input type="password" class="form-control border-0 border-bottom" id="password"
                     placeholder="enter a password">
                 <label for="password">Password</label>
             </div>
@@ -36,7 +36,7 @@
           const password = form.password.value;
   
           try {
-            const res = await fetch('/reports/login', {
+            const res = await fetch('/login', {
               method: 'POST',
               body: JSON.stringify({ email, password }),
               headers: { 'Content-Type': 'application/json' }

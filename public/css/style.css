@@ -87,7 +87,18 @@ textarea.parsley-error {
 .loginForm {
     align-content: center;
     align-items: center;
-    margin-left: 170px ;
+    margin-left: 170px;
     margin-top: 80px;
     padding: 10px;
+}
+
+.error {
+    color: #ff0099;
+    margin: 10px 2px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.navShift {
+    margin-left: 620px;
 }

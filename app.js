@@ -6,6 +6,8 @@ const mongoose = require("mongoose")
 const bodyParser = require('body-parser');
 const report = require('./routes/reportRoutes')
 const authRoutes = require('./routes/authRoutes')
+const cookieParser = require('cookie-parser')
+const { requireAuth, checkUser } = require('./middleware/auth')
 
 //Database Connection
 mongoose.set('strictQuery', true)
@@ -28,13 +30,20 @@ app.set('views', path.join(__dirname, 'views'));
 //Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(express.json())
+app.use(cookieParser())
 
+
+app.get('*',checkUser)
+
+//home route
 app.get('/', (req, res) => {
     res.render('components/home')
 });
 
+//report routes
+app.use('/reports',requireAuth, report)
 
-app.use('/reports', report)
-
-app.use('/reports', authRoutes)
+//login routes
+app.use(authRoutes)
 

@@ -24,8 +24,4 @@ router.post('/:id/update',reportController.reports_id_update);
 //delte route
 router.get('/:id/delete',reportController.reports_id_delete);
 
-
-
-
-
 module.exports = router
