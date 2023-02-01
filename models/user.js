@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required:[true,"Please enter mobile number"],
         minlength: [10, "enter 10 digit mobile number"],
-        manlength: [12, "Maximum 12 digit mobile number"],
+        maxlength: [12, "Maximum 12 digit mobile number"],
     },
     designation: {
         type: String

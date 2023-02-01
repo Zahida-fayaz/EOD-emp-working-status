@@ -1,13 +1,6 @@
 const Report = require('../models/report');
-const Reegister = require('../models/user');
-
-
-
-
-// const swal = require('sweetalert2');
 
 //all reports
-
 const all_reports = (req, res) => {
     Report.find({}, (error, foundReport) => {
         if (error) {
@@ -17,6 +10,7 @@ const all_reports = (req, res) => {
         }
     });
 };
+
 /*
 const all_reports = (req, res) => {
     // destructure page and limit and set default values
