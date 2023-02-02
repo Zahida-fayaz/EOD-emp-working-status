@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     },
     mobilenumber: {
         type: String,
-        required:[true,"Please enter mobile number"],
+        required: [true, "Please enter mobile number"],
         minlength: [10, "enter 10 digit mobile number"],
         maxlength: [12, "Maximum 12 digit mobile number"],
     },
@@ -29,6 +29,11 @@ const userSchema = new mongoose.Schema({
     },
     address: {
         type: String
+    },
+    role: {
+        type: String,
+        required: true,
+        enum: ['admin', 'employee'],
     }
 });
 
@@ -43,11 +48,17 @@ userSchema.pre('save', async function (next) {
 userSchema.statics.login = async function (email, password) {
     const user = await this.findOne({ email });
     if (user) {
-       const auth=await bcrypt.compare(password, user.password)
-       if(auth){
-        return user
-       }
-       throw Error('incorrect password')
+        const auth = await bcrypt.compare(password, user.password)
+        if (auth) {
+            if (user.role === "admin") {
+                return user
+            } else if (user.role === "employee") {
+                return user
+            } else {
+                throw Error('invalid role')
+            }
+        }
+        throw Error('incorrect password')
     }
     throw Error('incorrect email')
 }

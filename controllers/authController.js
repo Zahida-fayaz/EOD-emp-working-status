@@ -15,6 +15,11 @@ const handleErrors = (err) => {
         errors.password ="Password is incorrect"
     }
 
+    //error user role
+    if(err.message==="invalid role"){
+        errors.role ="Invalid role assigned to this user"
+    }
+
     //duplicate error code
     if (err.code === 11000) {
         errors.email = "Email already registered"
