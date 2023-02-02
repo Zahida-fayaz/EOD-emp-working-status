@@ -16,6 +16,16 @@
                 </div>
                 <div class="userName error"></div>
 
+                <div class="form-floating">
+                    <select class="form-select border-0 border-bottom role form-control" id="floatingSelect"
+                        aria-label="Floating label select example" name="role">
+                        <option selected>Select your role</option>
+                        <option value="admin">Admin</option>
+                        <option value="employee">Employee</option>
+                    </select>
+                </div>
+                <div class="role error"></div>
+
                 <div class="form-floating mb-2 ">
                     <input type="text" class="form-control border-0 border-bottom" id="email" placeholder="User email"
                         name="email">
@@ -32,7 +42,7 @@
 
                 <div class="form-floating mb-2 ">
                     <input type="number" class="form-control border-0 border-bottom" id="mobilenumber"
-                        placeholder="mobile number" name="mobilenumber" max="12">
+                        placeholder="mobile number" name="mobilenumber">
                     <label for="mobilenumber">Mobile Number</label>
                 </div>
                 <div class="mobilenumber error"></div>
@@ -61,7 +71,7 @@
         const passwordError = document.querySelector('.password.error');
         const usernameError = document.querySelector('.userName.error');
         const mobilenumberError = document.querySelector('.mobilenumber.error');
-
+        const roleError = document.querySelector('.role.error');
 
 
         form.addEventListener('submit', async (e) => {
@@ -71,6 +81,7 @@
             passwordError.textContent = '';
             usernameError.textContent = "";
             mobilenumberError.textContent = "";
+            roleError.textContent = "";
 
             // get values
             const email = form.email.value;
@@ -79,11 +90,13 @@
             const designation = form.designation.value;
             const mobilenumber = form.mobilenumber.value;
             const address = form.address.value;
+            const select = document.querySelector(".role");
+            const selectedValue = select.value;
 
             try {
                 const res = await fetch('/signup', {
                     method: 'POST',
-                    body: JSON.stringify({ email, password, userName, designation, mobilenumber, address }),
+                    body: JSON.stringify({ email, password, userName, designation, mobilenumber, address, role:selectedValue }),
                     headers: { 'Content-Type': 'application/json' }
                 });
                 const data = await res.json();

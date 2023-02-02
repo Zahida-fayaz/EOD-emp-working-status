@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const report = require('./routes/reportRoutes')
 const authRoutes = require('./routes/authRoutes')
 const cookieParser = require('cookie-parser')
-const { requireAuth, checkUser } = require('./middleware/auth')
+const { requireAuth, checkUser,isAdmin,isEmployee } = require('./middleware/auth')
 
 //Database Connection
 mongoose.set('strictQuery', true)
