@@ -56,7 +56,7 @@ const reports_new_post = (req, res) => {
             console.log("Got an error")
             console.log(err)
         })
-    res.redirect('/reports')
+    res.redirect('/')
 }
 
 //show one

@@ -43,7 +43,7 @@ const checkUser = (req, res, next) => {
 const isAdmin = (req, res, next) => {
   const user = res.locals.user;
   if (user && user.role !== 'admin') {
-    return res.status(401).send('Unauthorised');
+    return res.status(401).render('components/unauthorisedError');
   }
   next();
 };
@@ -52,7 +52,7 @@ const isAdmin = (req, res, next) => {
 const isEmployee=(req,res,next)=>{
   const user = res.locals.user;
   if(user&& user.role !== 'employee'){
-    return res.status(401).send('unauthorised')
+    return res.status(401).render('components/unauthorisedError')
   }
   next();
 }
