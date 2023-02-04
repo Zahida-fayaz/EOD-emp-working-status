@@ -7,7 +7,8 @@ const bodyParser = require('body-parser');
 const report = require('./routes/reportRoutes')
 const authRoutes = require('./routes/authRoutes')
 const cookieParser = require('cookie-parser')
-const { requireAuth, checkUser,isAdmin,isEmployee } = require('./middleware/auth')
+const adminRoutes = require('./routes/adminRoutes')
+const { requireAuth, checkUser, isAdmin, isEmployee } = require('./middleware/auth')
 
 //Database Connection
 mongoose.set('strictQuery', true)
@@ -34,16 +35,20 @@ app.use(express.json())
 app.use(cookieParser())
 
 
-app.get('*',checkUser)
+app.get('*', checkUser)
 
 //home route
 app.get('/', (req, res) => {
     res.render('components/home')
 });
 
-//report routes
-app.use('/reports',requireAuth, report)
-
 //login routes
 app.use(authRoutes)
+
+
+//report routes
+app.use('/reports',isEmployee, requireAuth, report)
+
+//admin routes
+app.use(requireAuth, isAdmin, adminRoutes)
 

@@ -1,15 +1,15 @@
 const Report = require('../models/report');
 
 //all reports
-const all_reports = (req, res) => {
-    Report.find({}, (error, foundReport) => {
-        if (error) {
-            console.log("Error")
-        } else {
-            res.render('components/show', { foundReport })
-        }
-    });
-};
+// const all_reports = (req, res) => {
+//     Report.find({}, (error, foundReport) => {
+//         if (error) {
+//             console.log("Error")
+//         } else {
+//             res.render('components/show', { foundReport })
+//         }
+//     });
+// };
 
 /*
 const all_reports = (req, res) => {
@@ -113,7 +113,7 @@ const reports_id_delete = (req, res) => {
 
 
 module.exports = {
-    all_reports,
+    // all_reports,
     reports_new,
     reports_new_post,
     report_id,

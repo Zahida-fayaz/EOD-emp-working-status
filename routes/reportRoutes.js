@@ -4,7 +4,7 @@ const reportController = require('../controllers/reportController');
 
 
 //all reports
-router.get('/', reportController.all_reports);
+// router.get('/', reportController.all_reports);
 
 //to new page
 router.get('/new', reportController.reports_new);
